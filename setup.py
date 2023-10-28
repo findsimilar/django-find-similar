@@ -37,7 +37,7 @@ def get_value_from_package_info(line, value, old_value):
 PACKAGE_NAME = "django_find_similar"
 
 PROJECT_URLS = {
-    'Documentation': 'https://django-find-similar.findsimilar.org',
+    'Documentation': 'https://django.findsimilar.org',
     'Source': 'https://github.com/findsimilar/django-find-similar',
     'Tracker': 'https://github.com/findsimilar/django-find-similar/issues',
     'Release notes': 'https://github.com/findsimilar/django-find-similar/releases',
