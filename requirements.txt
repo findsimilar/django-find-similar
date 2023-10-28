@@ -1,1 +1,1 @@
-wheel
+Django==4.2.6

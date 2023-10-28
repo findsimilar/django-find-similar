@@ -1,2 +1,2 @@
 [MAIN]
-ignore-paths=./pygenesis/package.py
+ignore-paths=./django_find_similar/package.py

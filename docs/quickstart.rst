@@ -1,5 +1,5 @@
 Quickstart
 ----------
 
-.. literalinclude:: ../quickstart/main.py
-   :pyobject: main
+.. literalinclude:: ../quickstart/apps.py
+   :pyobject: QuickstartConfig

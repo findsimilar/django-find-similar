@@ -34,15 +34,15 @@ def get_value_from_package_info(line, value, old_value):
     return None
 
 
-PACKAGE_NAME = "pygenesis"
+PACKAGE_NAME = "django_find_similar"
 
 PROJECT_URLS = {
-    'Documentation': 'https://pygenesis.libresource.info',
-    'Source': 'https://github.com/libresource/pygenesis',
-    'Tracker': 'https://github.com/libresource/pygenesis/issues',
-    'Release notes': 'https://github.com/libresource/pygenesis/releases',
-    'Changelog': 'https://github.com/libresource/pygenesis/releases',
-    'Download': 'https://pypi.org/project/pygenesis/',
+    'Documentation': 'https://django-find-similar.findsimilar.org',
+    'Source': 'https://github.com/findsimilar/django-find-similar',
+    'Tracker': 'https://github.com/findsimilar/django-find-similar/issues',
+    'Release notes': 'https://github.com/findsimilar/django-find-similar/releases',
+    'Changelog': 'https://github.com/findsimilar/django-find-similar/releases',
+    'Download': 'https://pypi.org/project/django-find-similar/',
 }
 
 with open_local([PACKAGE_NAME, "package.py"]) as fp:
@@ -74,13 +74,13 @@ setup(
 
     include_package_data=True,
     license="MIT",
-    description="Python package repository template",
+    description="find-similar integration for django",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    url="https://github.com/libresource/pygenesis",
+    url="https://github.com/findsimilar/django-find-similar",
     author="quillcraftsman",
     author_email="quill@craftsman.lol",
-    keywords=["python", "package", "template-repository"],
+    keywords=["python", "django", "find-similar", "integration"],
     # install_requires=[
     #     'Django==4.2.6',
     # ],
@@ -90,11 +90,10 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        'Environment :: Console',
+        'Environment :: Web Environment',
+        'Framework :: Django',
         "Operating System :: OS Independent",
-        "Topic :: Software Development",
-        "Topic :: Software Development :: Libraries",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Utilities",
     ],
     project_urls= PROJECT_URLS,
 )

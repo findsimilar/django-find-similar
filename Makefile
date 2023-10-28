@@ -1,8 +1,11 @@
 test:
-	pytest
+	python manage.py test
 
 coverage:
-	pytest -s --cov --cov-report html --cov-fail-under 100
+	coverage run --source='.' manage.py test
+	coverage html --omit=settings/asgi.py,settings/wsgi.py,manage.py,django_find_similar/management/*,django_find_similar/package.py,setup.py
+	coverage report --omit=settings/asgi.py,settings/wsgi.py,manage.py,examples/django_find_similar/*,django_find_similar/package.py,setup.py --fail-under=100
+
 
 yamllint:
 	yamllint -d relaxed .
@@ -18,9 +21,9 @@ install:
 	pip install dist/*.whl
 
 uninstall:
-	pip uninstall pygenesis -y
+	pip uninstall django-find-similar -y
 	rm -rf dist
-	rm -rf django_dry_tests.egg-info
+	rm -rf django-find-similar.egg-info
 
 reinstall:
 	make uninstall
@@ -37,4 +40,4 @@ sphinx-help:
 	make help -f Sphinxfile
 
 package_docs:
-	sphinx-apidoc -o docs/package pygenesis/
+	sphinx-apidoc -o docs/package django_find_similar/

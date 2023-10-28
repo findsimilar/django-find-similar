@@ -10,7 +10,7 @@ Configuration file for the Sphinx documentation builder.
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-from pygenesis.package import name, version, status  # pylint: disable=wrong-import-position
+from django_find_similar.package import name, version, status  # pylint: disable=wrong-import-position
 
 project = name  # pylint: disable=invalid-name
 author = 'quillcraftsman'  # pylint: disable=invalid-name

@@ -1,7 +1,7 @@
-pygenesis
-=========
+django_find_similar
+===================
 
 .. toctree::
    :maxdepth: 4
 
-   pygenesis
+   django_find_similar
