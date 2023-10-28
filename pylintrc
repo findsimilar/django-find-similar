@@ -1,2 +1,4 @@
 [MAIN]
-ignore-paths=./django_find_similar/package.py
+disable=
+    E1101, #  No member
+ignore-paths=./django_find_similar/package.py,.*/migrations
