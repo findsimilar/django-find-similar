@@ -3,7 +3,7 @@ django-find-similar
 
 find-similar integration for django
 
-Project on `GitHub <https://github.com/findsimiar/django-find-similar>`_
+Project on `GitHub <https://github.com/findsimilar/django-find-similar>`_
 
 - :ref:`Mission`
 - :ref:`Open Source Project`
