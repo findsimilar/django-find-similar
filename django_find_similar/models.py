@@ -2,32 +2,53 @@
 django-find-similar main models
 """
 from django.db import models
+from find_similar import find_similar, TokenText as FindSimilarTokenText
+from find_similar.tokenize import tokenize
 
 
-class Text(models.Model):
-    """
-    Simple unique text model
-    """
-    text = models.TextField(unique=True)
+class AbstractTimestamp(models.Model):
+
+    class Meta:
+        abstract = True
+
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
 
 
-class FindSimilarInput(models.Model):
-    """
-    find-similar input params
-    """
-    # 'text': 'one two',
-    text = models.ForeignKey(
-                             Text,
-                             on_delete=models.CASCADE,
-                             related_name='text_find_similar_inputs'
-                             )
-    # 'texts': ['one', 'two'],
-    texts = models.ManyToManyField(Text)
-    # 'language': "english",
+class AbstractTextToken(AbstractTimestamp):
+    text = models.TextField()
     language = models.CharField(max_length=128, default='english')
-    # 'count': 5,
-    count = models.PositiveIntegerField(default=5)
-    # 'dictionary': None,
-    # 'remove_stopwords': True,
     remove_stopwords = models.BooleanField(default=True)
-    # 'keywords': None,
+    cos = models.FloatField(blank=True, null=True)
+
+    def has_tokens(self):
+        return self.token_set.all().exists()
+
+    def create_tokens(self):
+        token_set = tokenize(self.text, language=self.language, remove_stopwords=self.remove_stopwords)
+        tokens = map(lambda text_str: Token(value=text_str, token_text=self), token_set)
+        Token.objects.bulk_create(tokens)
+
+    class Meta:
+        abstract = True
+
+
+class TextToken(AbstractTextToken):
+    pass
+
+
+class AbstractToken(AbstractTimestamp):
+
+    class Meta:
+        abstract = True
+
+    value = models.TextField()
+    token_text = models.ForeignKey(TextToken, on_delete=models.CASCADE)
+
+
+class Token(AbstractToken):
+    pass
+
+
+def find_similar_models(text: AbstractTextToken, texts):
+    return [text]

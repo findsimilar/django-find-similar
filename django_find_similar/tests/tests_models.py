@@ -2,36 +2,26 @@
 Tests for models
 """
 from django.test import TestCase
-# from find_similar import find_similar
-from django_find_similar.models import FindSimilarInput, Text
+from find_similar import find_similar, TokenText
+from django_find_similar.models import TextToken, Token, find_similar_models
 
 
-class FindSimilarInputTestCase(TestCase):
-    """
-    Test FindSimilarInput model
-    """
+class ModelsTestCase(TestCase):
 
-    def test_create(self):
-        """
-        Test properties
-        """
-        input_data = {
-            'text': Text.objects.create(text='one two'),
-            # 'texts': [Text.objects.create(text='one'), Text.objects.create(text='two')],
-            'language': "english",
-            'count': 5,
-            # 'dictionary': None,
-            'remove_stopwords': True,
-            # 'keywords': None,
-        }
-        find_similar_input = FindSimilarInput.objects.create(
-            **input_data
-        )
+    def setUp(self):
+        self.text_str = 'one two'
+        self.text_token = TextToken.objects.create(text=self.text_str)
 
-        texts = [Text.objects.create(text='one'), Text.objects.create(text='two')]
+    def test_text_to_token_text(self):
+        self.assertEqual(self.text_token.text, self.text_str)
+        self.assertEqual(self.text_token.language, 'english')
+        self.assertTrue(self.text_token.remove_stopwords)
 
-        for text in texts:
-            find_similar_input.texts.add(text)
-        find_similar_input.save()
-
-        self.assertEqual(find_similar_input.text, input_data['text'])
+    def test_create_tokens(self):
+        self.assertFalse(self.text_token.has_tokens())
+        self.text_token.create_tokens()
+        self.assertTrue(self.text_token.has_tokens())
+        self.assertEqual(self.text_token.token_set.count(), 2)
+        tokens_str = ['one', 'two']
+        for token_str in tokens_str:
+            self.assertTrue(self.text_token.token_set.filter(value=token_str).exists())
