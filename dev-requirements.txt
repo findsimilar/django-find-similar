@@ -2,3 +2,4 @@ yamllint==1.32.0
 pylint==3.0.1
 build==1.0.3
 coverage==7.3.2
+django-dry-tests==1.0.0
