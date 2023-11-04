@@ -1,4 +1,6 @@
 [MAIN]
 disable=
     E1101, #  No member
+    W0201, #  Dynamic attributes
+    R0903, #  Few public methods
 ignore-paths=./django_find_similar/package.py,.*/migrations

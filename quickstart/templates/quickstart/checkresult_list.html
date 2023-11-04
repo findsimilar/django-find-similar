@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Text</th>
+            <th>Language</th>
+            <th>Remove Stop Words</th>
+            <th>Items</th>
+        </tr>
+    {% for result in object_list %}
+        {% with result.text as text %}
+        <tr>
+            <td>{{text.text}}</td>
+            <td>{{text.language}}</td>
+            <td>{{text.remove_stopwords}}</td>
+            <td>
+                <ul>
+                {% for item in result.checkresultitem_set.all %}
+                    <li>
+                        {{item.text.text}} / {{item.cos}} / {{item.cos_percent}}
+                    </li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endwith %}
+    {% endfor %}
+    </table>
+</body>
+</html>
