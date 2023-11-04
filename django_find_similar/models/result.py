@@ -43,10 +43,10 @@ class CheckResultItem(AbstractTimestamp):
         """
         text_token = item.text_token_model
         check_result_item = CheckResultItem.objects.create(
-            text = text_token,
-            order = order,
-            cos = item.cos,
-            result = check_result,
+            text=text_token,
+            order=order,
+            cos=item.cos,
+            result=check_result,
         )
         return check_result_item
 

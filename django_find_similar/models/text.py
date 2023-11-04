@@ -24,6 +24,7 @@ class AbstractTextToken(AbstractTimestamp):
     """
     Abstract class for TextToken
     """
+
     text = models.TextField()
     language = models.CharField(
         max_length=128,
@@ -55,6 +56,7 @@ class AbstractTextToken(AbstractTimestamp):
         Meta
         """
         abstract = True
+        unique_together = ["text", "language", "remove_stopwords"]
 
 
 class TextToken(AbstractTextToken):
@@ -73,6 +75,7 @@ class AbstractToken(AbstractTimestamp):
         Meta
         """
         abstract = True
+        unique_together = ["value", "token_text"]
 
     value = models.TextField()
     token_text = models.ForeignKey(TextToken, on_delete=models.CASCADE)

@@ -1,6 +1,7 @@
 """
 Tests for models
 """
+from django.db.utils import IntegrityError
 from django.test import TestCase
 from find_similar import TokenText, find_similar
 from django_find_similar.models import TextToken, CheckResult, CheckResultItem, TokenTextAdapter
@@ -17,6 +18,15 @@ class ModelsTestCase(TestCase):
         """
         self.text_str = 'one two'
         self.text_token = TextToken.objects.create(text=self.text_str)
+
+    def test_unique(self):
+        """save the save text token"""
+        with self.assertRaises(IntegrityError):
+            TextToken.objects.create(
+                text=self.text_token.text,
+                language=self.text_token.language,
+                remove_stopwords=self.text_token.remove_stopwords
+            )
 
     def test_text_to_token_text(self):
         """
