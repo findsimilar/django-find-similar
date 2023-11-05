@@ -8,6 +8,8 @@ Subpackages
    :maxdepth: 4
 
    django_find_similar.migrations
+   django_find_similar.models
+   django_find_similar.tests
 
 Submodules
 ----------
@@ -28,10 +30,10 @@ django\_find\_similar.apps module
    :undoc-members:
    :show-inheritance:
 
-django\_find\_similar.models module
------------------------------------
+django\_find\_similar.forms module
+----------------------------------
 
-.. automodule:: django_find_similar.models
+.. automodule:: django_find_similar.forms
    :members:
    :undoc-members:
    :show-inheritance:
@@ -40,14 +42,6 @@ django\_find\_similar.package module
 ------------------------------------
 
 .. automodule:: django_find_similar.package
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-django\_find\_similar.tests module
-----------------------------------
-
-.. automodule:: django_find_similar.tests
    :members:
    :undoc-members:
    :show-inheritance:
