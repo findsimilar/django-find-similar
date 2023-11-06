@@ -43,13 +43,32 @@ class AbstractTextToken(AbstractTimestamp):
         """
         Create tokens
         """
-        token_set = tokenize(
+        tokens = self.generate_tokens()
+        Token.objects.bulk_create(tokens)
+
+    def generate_token_set(self):
+        """
+        Generate token set with find_similar
+        """
+        return tokenize(
             self.text,
             language=self.language,
             remove_stopwords=self.remove_stopwords
         )
+
+    def generate_tokens(self):
+        """
+        get Token list without save
+        """
+        token_set = self.generate_token_set()
         tokens = map(lambda text_str: Token(value=text_str, token_text=self), token_set)
-        Token.objects.bulk_create(tokens)
+        return tokens
+
+    def get_token_set(self):
+        """
+        Get tokens as set
+        """
+        return set(self.token_set.values_list('value', flat=True))
 
     class Meta:
         """

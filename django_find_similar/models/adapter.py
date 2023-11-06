@@ -2,7 +2,7 @@
 Adapters for find_similar
 """
 from find_similar import TokenText
-from .text import AbstractTextToken, Token
+from .text import AbstractTextToken
 
 
 class TokenTextAdapter(TokenText):
@@ -17,20 +17,11 @@ class TokenTextAdapter(TokenText):
 
         super().__init__(
             text=self.text_token_model.text,
-            tokens=None,
+            tokens=self.text_token_model.get_token_set(),
             dictionary=None,
             language=self.text_token_model.language,
             remove_stopwords=self.text_token_model.remove_stopwords,
         )
-
-
-        # save tokens to db
-        Token.objects.filter(token_text=self.text_token_model).delete()
-        tokens = map(
-            lambda text_str: Token(value=text_str, token_text=self.text_token_model),
-            self.tokens
-        )
-        Token.objects.bulk_create(tokens)
 
     def save_cos(self):
         """

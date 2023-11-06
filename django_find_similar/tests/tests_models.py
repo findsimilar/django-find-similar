@@ -83,3 +83,18 @@ class TestCheckResult(TestCase):
         check_result = CheckResult.objects.create(text=self.text_token)
         expected_str = str(self.text_token)
         self.assertEqual(str(check_result), expected_str)
+
+
+class TestTextToken(TestCase):
+    """
+    Test TextToken
+    """
+
+    def test_get_token_set(self):
+        """
+        Test get_token_set
+        """
+        text_token = TextToken.objects.create(text='one two')
+        self.assertEqual(text_token.get_token_set(), set())
+        text_token.create_tokens()
+        self.assertEqual(text_token.get_token_set(), {'one', 'two'})
