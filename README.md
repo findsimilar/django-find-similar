@@ -92,12 +92,12 @@ Be free to use, fork, clone and contribute.
 ## Requirements
 
 - django, find-similar
-- See more in [Full Documentation](https://django.findsimilar.org/about.html#requirements)
+- See more in [Full Documentation](https://dfs.craftsman.lol/about.html#requirements)
 
 ## Development Status
 
 - Package already available on [PyPi](https://pypi.org/project/django-find-similar/)
-- See more in [Full Documentation](https://django.findsimilar.org/about.html#development-status)
+- See more in [Full Documentation](https://dfs.craftsman.lol/about.html#development-status)
 
 ## Install
 
@@ -107,7 +107,7 @@ Be free to use, fork, clone and contribute.
 pip install django-find-similar
 ```
 
-See more in [Full Documentation](https://django.findsimilar.org/install.html)
+See more in [Full Documentation](https://dfs.craftsman.lol/install.html)
 
 ## Quickstart
 
@@ -142,10 +142,10 @@ find_similar_input.save()
 You are welcome! To easy start please check:
 - [Full Documentation][documentation_path]
 - [Contributing](CONTRIBUTING.md)
-- [Developer Documentation](https://django.findsimilar.org/dev_documentation.html)
+- [Developer Documentation](https://dfs.craftsman.lol/dev_documentation.html)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Security Policy](SECURITY.md)
 - [Governance](GOVERNANCE.md)
 - [Support](SUPPORT.md)
 
-[documentation_path]: https://django.findsimilar.org
+[documentation_path]: https://dfs.craftsman.lol
